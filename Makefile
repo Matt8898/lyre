@@ -22,7 +22,8 @@ QEMU_FLAGS :=       \
     -d cpu_reset    \
     -smp 1          \
     -hda lyre.hdd   \
-    -enable-kvm -cpu host,+invtsc
+    -enable-kvm -cpu host,+invtsc\
+	-netdev tap,id=mynet0,ifname=tap0,script=no,downscript=no -device rtl8139,netdev=mynet0,mac=52:55:00:d1:55:01
 
 run:
-	qemu-system-x86_64 $(QEMU_FLAGS)
+	/home/matt/mnt/compile/qemupatch/build/qemu-system-x86_64 $(QEMU_FLAGS)
